@@ -1,0 +1,34 @@
+/**
+ * MyLeaf
+ * @constructor
+ * @param scene - Reference to MyScene object
+ */
+class MyLeaf extends CGFobject {
+	constructor(scene) {
+		super(scene);
+		this.initObjects();
+		this.initMaterials();
+	}
+
+	initObjects() {
+		this.leaf = new MyTriangle(this.scene);
+	}
+
+	initMaterials() {
+        this.materials = [];
+
+        var mat = new CGFappearance(this.scene);
+        mat.setAmbient(1.0, 1.0, 1.0, 1.0);
+        mat.setSpecular(1.0, 1.0, 1.0, 1.0);
+        mat.setDiffuse(0, 1.0, 0, 1.0);
+        mat.setShininess(10.0);
+        this.materials.push(mat);
+
+    }
+
+	display () {
+		this.materials[0].apply();
+		this.leaf.display();
+	}
+}
+
